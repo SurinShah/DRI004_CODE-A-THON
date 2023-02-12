@@ -1,10 +1,2 @@
-# digitization of rural india
-We have built a web app for Rural India to help them find affordable health insurance plans and for Local Companies to find their next Customer.
-
-Objectives:
-
-To create an interface for user and company each.
-
-To digitise the whole process of documentation.
-
+ We develop a user friendly health insurance web application “Swasthya Suraksha”  for rural India, that enables them to select a Health insurance plan according to their price requirements and upload the necessary documents thereby digitalizing the whole process. This application also enables the local Health Insurance Companies to post their plans, keep track of customer information and carry out the entire process digitally.​
 
