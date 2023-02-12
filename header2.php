@@ -41,8 +41,6 @@
         <div class="collapse navbar-collapse" id="Navbar">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="home.php" id="home"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="startuphome.php" id="Startup"><span class="fa fa-id-badge fa-lg"></span> Users</a></li>
-                <li class="nav-item"><a class="nav-link" href="investorhome.php" id="show"><span class="fa fa-industry fa-lg"></span> Company</a></li>
                 
             </ul>
             <ul class="navbar-nav ml-auto ">
