@@ -1,10 +1,10 @@
-﻿<?php
+<?php
 
 require_once 'sendEmails.php';
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "venture";
+$database = "venture3";
 
 // Create connection
 $link = mysqli_connect($servername, $username, $password, $database);
@@ -163,9 +163,12 @@ if(array_key_exists("lsubmit", $_POST)){
             $row =mysqli_fetch_array($result);
             if($row['password']==$password)
             {
-                //not done yet
-                //$_SESSION['id']=??;
+                
                 session_start();
+                $cname= $row['cname'];
+                $_SESSION["cname"] = $cname;
+                $email = $_POST['lmail'];
+                $_SESSION["idcomp"] = $email;
                 $_SESSION['verified']=$row['verified'];
                 $_SESSION['cid']=$row['id'];
                 $_SESSION['investor_is_auth']=1;
@@ -260,6 +263,7 @@ if(array_key_exists("lsubmit", $_POST)){
                                 <input type="text" class="form-control" id="name" name="phone" placeholder="Contact number">
                                 <span class="errorresult" style="color:red;"><?php if(isset($errors['phone'])){echo $errors['phone'];}?></span>
                             </div>
+                            
                         
                             <label for="firstname" class="col-form-label col-12 col-md-1 ">Location</label>
                             <div class="col-12 col-md-5 ">
@@ -311,7 +315,7 @@ if(array_key_exists("lsubmit", $_POST)){
             <div class="col-12 ">
                 <form id="mysform" method="POST" style="margin-top: 1em;">
                     
-                    <h3 style="text-align: center;">Investor Log In</h3>
+                    <h3 style="text-align: center;">Company Log In</h3>
                     <hr style="border-top: 1px solid #9900cc;">
                     <br>
                     <h5>Enter Credentials</h5>
