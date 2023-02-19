@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "venture";
+$database = "venture3";
 
 // Create connection
 $link = mysqli_connect($servername, $username, $password, $database);
@@ -27,9 +27,10 @@ $msg = "";
 <?php
 
 // Attempt select query execution
-        echo '<div class="row"><br/><br/><br/><h3>Your Posted Ideas</h3><hr style="border-top: 1px solid #9900cc;"/></div>';
+        echo '<div class="row"><br/><br/><br/><h3>Your Details</h3><hr style="border-top: 1px solid #9900cc;"/></div>';
         $id=$_SESSION['sid'];
-        $sql = "SELECT * FROM postidea WHERE startupid = '$id'";
+        $sql = "SELECT * FROM postidea";
+        // $result1 = mysqli_query($link, "SELECT * FROM images");
         if($result = mysqli_query($link, $sql)){
             if(mysqli_num_rows($result) > 0){
                 echo "<table class='table table-bordered table-striped'>";
@@ -37,30 +38,34 @@ $msg = "";
                         echo "<tr>";
                             echo "<th>Idea ID</th>";
                             echo "<th>Name</th>";
-                            echo "<th>Email</th>";
-                            echo "<th>Idea</th>";
-                            echo "<th>Action</th>";
-
+                            echo "<th>Number</th>";
+                            echo "<th>Price Range</th>";
+                            echo "<th>Diseases (If any)</th>";
+                            echo "<th>Image</th>";
+                            
 
                         echo "</tr>";
                     echo "</thead>";
                     echo "<tbody>";
+
                     while($row = mysqli_fetch_array($result)){
                         echo "<tr>";
-                            echo "<td>" . $row['ideaid'] . "</td>";
+                            echo "<td>" . $row['startupid'] . "</td>";
                             echo "<td>" . $row['name'] . "</td>";
-                            echo "<td>" . $row['email'] . "</td>";
-                            echo "<td>" . $row['briefidea'] . "</td>";
-                           
-                            echo "<td>";
+                            echo "<td>" . $row['phone'] . "</td>";
+                            echo "<td>" . $row['prange'] . "</td>";
+                            echo "<td>" . $row['disease'] . "</td>";
+                            echo "<td>" . "<img src=image/".$row['image']." height=100 width=150 />" . "</td>";                         
+
+                            // echo "<td>";
                                 
-                                echo "<a href='edit.php?ideaid=". $row['ideaid'] ."' title='Update Record' data-toggle='tooltip' class='btn btn-primary'>Edit</a>";
+                            //     echo "<a href='edit.php?startupid=". $row['startupid'] ."' title='Update Record' data-toggle='tooltip' class='btn btn-primary'>Edit</a>";
 
 
-                              echo "<a href='delete.php?ideaid=". $row['ideaid'] ."' title='Delete Record' data-toggle='tooltip' class='btn btn-danger''>Delete</a>";
+                            //   echo "<a href='delete.php?startupid=". $row['startupid'] ."' title='Delete Record' data-toggle='tooltip' class='btn btn-danger''>Delete</a>";
                    
 
-                            echo "</td>";
+                            // echo "</td>";
                         echo "</tr>";
                     }
                     echo "</tbody>";                            
@@ -79,7 +84,7 @@ $msg = "";
 ?>
 
 
-<button onclick="location.href = 'startuphome.php';" id="myButton" class="btn btn-info">Back</button>
+<button onclick="location.href = 'userhome.php';" id="myButton" class="btn btn-info">Back</button>
 <div class="row">
         <br><br><br>
 </div>
@@ -112,6 +117,7 @@ $msg = "";
 
 <!-- END of container class -->
     </div>
+
        
-<?php require('footer.php'); 
+    <?php require('footer.php'); 
 ?>
