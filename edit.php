@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "venture";
+$database = "venture3";
 
 // Create connection
 $link = mysqli_connect($servername, $username, $password, $database);
@@ -28,7 +28,7 @@ $msg = "";
 <?php
 
 if(count($_POST)>0) {
-    $sql = "UPDATE postidea set briefidea='" . $_POST["briefidea"] . "' WHERE startupid='" . $_POST["startupid"] . "'";
+    $sql = "UPDATE postidea set prange='" . $_POST["prange"] . "' WHERE startupid='" . $_POST["startupid"] . "'";
     mysqli_query($link,$sql);
     echo '<div class="alert alert-info alert-dismissible fade show">
                     <strong>Success!</strong> Idea updated successfully!
@@ -55,30 +55,19 @@ if(count($_POST)>0) {
 
 <form method="POST" id="ideaform">
 
-
-                
-               <!-- <h6>Number of Founders </h6>
-                <input type="text" id="numberfounder" />
-                <input type="button" value="?" onclick="generate()" />
-                <br><br>
-                <div id="ch">
-                    
-                </div> -->
-                
-                
                 <div class="form-group">
-                    <label for="startupid" class="col-form-label "><h6>Idea</h6></label>
+                    <label for="startupid" class="col-form-label "><h6>User ID</h6></label>
                     <input type="text" class="form-control" id="startupid" name="startupid" value='<?php echo $_GET['startupid'];?>' readonly>
-                            
+                           <br> 
 
-                    <label for="exampleFormControlTextarea1"><h6> Edit your Idea </h6></label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="briefidea"></textarea>
+                    <label for="exampleFormControlTextarea1"><h6> Edit your Price Range</h6></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="prange"></textarea>
                 </div>
 
-                <input type="submit" class="btn btn-info" name="submit" value="Update Idea">
+                <input type="submit" class="btn btn-info" name="submit" value="Update Details">
               
 </form>
-<button onclick="location.href = 'read.php';" id="myButton" class="btn btn-info">View Updated Idea</button>
+<button onclick="location.href = 'adminhome.php?get=userdet';" id="myButton" class="btn btn-info">View Updated Details</button>
 <div class="row">
     <br><br><br><br>
 </div>
