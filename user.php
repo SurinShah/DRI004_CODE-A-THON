@@ -1,10 +1,10 @@
-﻿<?php
+<?php
 
 require_once 'sendEmails.php';
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "venture";
+$database = "venture3";
 
 $link = mysqli_connect($servername, $username, $password, $database);
 
@@ -61,8 +61,9 @@ if(array_key_exists("l-submit", $_POST))
             if($row['password']==$password)
             {
                 //not done yet
-                //$_SESSION['id']=??;
                 session_start();
+                $email = $_POST['email'];
+                $_SESSION["id"] = $email;
                 $_SESSION['sid']=$row['id'];
                 $_SESSION['s_is_auth']=true;
                 $_SESSION['verified']=$row['verified'];
